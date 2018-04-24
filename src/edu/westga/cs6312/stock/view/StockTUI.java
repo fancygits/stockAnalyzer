@@ -2,6 +2,7 @@ package edu.westga.cs6312.stock.view;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import edu.westga.cs6312.stock.model.StockManager;
@@ -38,16 +39,7 @@ public class StockTUI {
 	 */
 	public void run() {
 		System.out.println("Welcome to the Stock Market Application");
-		boolean isValid = false;
-		do {
-			System.out.print("Please enter the file name: ");
-			String filename = this.input.nextLine();
-/*			try {
-				File inFile = new File(filename);
-			} catch (FileNotFoundException fnfe) {
-				System.out.println("That file is not found.");				
-			}
-*/		} while (isValid != true);
+		
 		int selection = -1;
 		do {
 			this.displayMenu();
@@ -86,4 +78,5 @@ public class StockTUI {
 		} while (!isValid);
 		return response;
 	}
+	
 }

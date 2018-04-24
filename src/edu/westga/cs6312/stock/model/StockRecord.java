@@ -43,6 +43,24 @@ public class StockRecord {
 		this.volume = volume;
 	}
 	
+	/**
+	 * Constructs a new StockRecord object from a line of input
+	 * @param lineOfInput	A line from a CSV file
+	 */
+	public StockRecord(String lineOfInput) {
+		String[] record = lineOfInput.split(",");
+		if (record.length != 7) {
+			throw new IllegalArgumentException("Not enough data to create a record");
+		}
+		this.date = record[0];
+		this.open = Double.parseDouble(record[1]);
+		this.high = Double.parseDouble(record[2]);
+		this.low = Double.parseDouble(record[3]);
+		this.close = Double.parseDouble(record[4]);
+		this.adjClose = Double.parseDouble(record[5]);
+		this.volume = Long.parseLong(record[6].trim());
+	}
+	
 	private String dateReformatter(String strDate) {
 		SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
 		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -53,7 +71,6 @@ public class StockRecord {
 		} catch (ParseException pe) {
 			throw new IllegalArgumentException("Invalid date format");
 		}
-		
 	}
 	
 	/** 

@@ -39,8 +39,6 @@ public class StockTUI {
 	 * for the user to choose from
 	 */
 	public void run() {
-		
-		
 		int selection = -1;
 		do {
 			this.displayMenu();

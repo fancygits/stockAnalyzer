@@ -44,7 +44,6 @@ public class FileInteractor {
 			inFile.close();
 			throw new NoSuchElementException("Read past end of file.");
 		}
-		System.out.println(stockManager.toString());
 		return stockManager;
 	}
 }

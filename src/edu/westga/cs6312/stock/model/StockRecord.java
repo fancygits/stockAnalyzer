@@ -62,8 +62,8 @@ public class StockRecord {
 	}
 	
 	private String dateReformatter(String strDate) {
-		SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
-		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			Date date = inputFormat.parse(strDate);
 			String output = outputFormat.format(date);
@@ -78,13 +78,12 @@ public class StockRecord {
 	 */
 	@Override
 	public String toString() {
-		String output = this.dateReformatter(this.date);
-		output += String.format("%11.2f%11.2f%11.2f%11.2f%11.2f%10d", this.open, this.high, this.low, this.close, this.adjClose, this.volume);
+		String output = String.format("%11s%11.2f%11.2f%11.2f%11.2f%11.2f%10d", this.date, this.open, this.high, this.low, this.close, this.adjClose, this.volume);
 		return output;
 	}
 	
 	/**
-	 * Accessor for the date in the format MM/dd/yyyy
+	 * Accessor for the date in the format yyyy-MM-dd
 	 * @return	String date
 	 */
 	public String getDate() {
@@ -92,7 +91,7 @@ public class StockRecord {
 	}
 	
 	/**
-	 * Accessor for the reformatted date in the format yyyy-MM-dd
+	 * Accessor for the reformatted date in the format MM/dd/yyyy
 	 * @return	String reformatted date
 	 */
 	public String getReformattedDate() {

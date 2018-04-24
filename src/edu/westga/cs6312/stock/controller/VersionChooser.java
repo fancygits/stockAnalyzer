@@ -17,10 +17,16 @@ public class VersionChooser {
 	private Scanner input;
 	private StockManager stockManager;
 	
+	/**
+	 * Constructs a new VersionChooser object
+	 */
 	public VersionChooser() {
 		this.input = new Scanner(System.in);
 	}
 	
+	/**
+	 * Prompts the user to choose a version of the application
+	 */
 	public void chooseVersion() {
 		System.out.println("Welcome to the Stock Market Application");
 		String fileName = this.getFileName();
@@ -28,6 +34,9 @@ public class VersionChooser {
 		this.runTextOption();
 	}
 	
+	/**
+	 * Runs the TUI Stock Market Application
+	 */
 	private void runTextOption() {
 		StockTUI textOption = new StockTUI(this.stockManager);
 		textOption.run();

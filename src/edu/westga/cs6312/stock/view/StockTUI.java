@@ -16,6 +16,10 @@ public class StockTUI {
 	private StockManager stockManager;
 	private Scanner input;
 	
+	/**
+	 * Constructs a new StockTUI object
+	 * @param stockManager	A StockManager object
+	 */
 	public StockTUI(StockManager stockManager) {
 		this.stockManager = stockManager;
 		this.input = new Scanner(System.in);

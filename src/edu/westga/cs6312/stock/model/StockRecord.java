@@ -83,6 +83,14 @@ public class StockRecord {
 	}
 	
 	/**
+	 * Returns a summary of closing price and date
+	 * @return	String summary
+	 */
+	public String getSummary() {
+		return String.format("Closed at $%.2f on %s", this.getClose(), this.getDate());
+	}
+	
+	/**
 	 * Accessor for the date in the format yyyy-MM-dd
 	 * @return	String date
 	 */

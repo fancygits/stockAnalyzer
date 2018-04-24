@@ -44,7 +44,7 @@ public class StockTUI {
 			this.displayMenu();
 			selection = this.getUserInt("Please enter your choice: ");
 			switch (selection) {
-				case 1: 
+				case 1: this.displaySummaryData();
 						break;
 				case 2: 
 						break;
@@ -77,5 +77,15 @@ public class StockTUI {
 		} while (!isValid);
 		return response;
 	}
-	
+
+	private void displaySummaryData() {
+		int middle = this.stockManager.getSize() / 2;
+		int last = this.stockManager.getSize() - 1;
+		System.out.print("First Record:\t");
+		System.out.println(this.stockManager.getRecord(0).getSummary());
+		System.out.print("Middle Record:\t");
+		System.out.println(this.stockManager.getRecord(middle).getSummary());
+		System.out.print("Last Record:\t");
+		System.out.println(this.stockManager.getRecord(last).getSummary());
+	}
 }

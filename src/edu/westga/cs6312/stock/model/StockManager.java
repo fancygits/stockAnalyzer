@@ -33,6 +33,27 @@ public class StockManager {
 	}
 	
 	/**
+	 * Returns the given StockRecord from the ArrayList
+	 * 
+	 * @param index	The index of the record to retrieve
+	 * @return		The StockRecord of the given index
+	 */
+	public StockRecord getRecord(int index) {
+		if (index > this.stockRecords.size() - 1) {
+			throw new IllegalArgumentException("That StockRecord doesn't exist");
+		}
+		return this.stockRecords.get(index);
+	}
+	
+	/**
+	 * Accessor for the size of the ArrayList
+	 * @return	int Size of StockManager ArrayList<StockRecord>
+	 */
+	public int getSize() {
+		return this.stockRecords.size();
+	}
+	
+	/**
 	 * Returns a String representation of the object
 	 */
 	@Override

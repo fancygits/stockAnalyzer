@@ -39,8 +39,8 @@ public class StockTUI {
 	 * for the user to choose from
 	 */
 	public void run() {
-		System.out.println("Welcome to the Stock Market Application");
-		this.stockManager = FileInteractor.readData(input.nextLine());
+		
+		
 		int selection = -1;
 		do {
 			this.displayMenu();

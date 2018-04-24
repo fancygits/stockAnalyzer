@@ -26,29 +26,24 @@ public class FileInteractor {
 		File sourceFile = new File(fileName);
 		Scanner inFile = null;
 		StockManager stockManager = new StockManager();
-		boolean isValid = false;
-		do {
-			try {
-				inFile = new Scanner(sourceFile);
-				inFile.nextLine();
-				isValid = true;
-				while (inFile.hasNextLine()) {
-					String nextLine = inFile.nextLine();
-					try {
-						stockManager.addRecord(new StockRecord(nextLine));
-					} catch (IllegalArgumentException iae) {
-						
-					}
+		try {
+			inFile = new Scanner(sourceFile);
+			inFile.nextLine();
+			while (inFile.hasNextLine()) {
+				String nextLine = inFile.nextLine();
+				try {
+					stockManager.addRecord(new StockRecord(nextLine));
+				} catch (IllegalArgumentException iae) {
+					
 				}
-				inFile.close();
-			} catch (FileNotFoundException fnfe) {
-				inFile.close();
-				throw new IllegalArgumentException("That file does not exist.");
-			} catch (NoSuchElementException nsee) {
-				inFile.close();
-				throw new NoSuchElementException("Read past end of file.");
 			}
-		} while (isValid == false);
+			inFile.close();
+		} catch (FileNotFoundException fnfe) {
+			throw new IllegalArgumentException("That file does not exist.");
+		} catch (NoSuchElementException nsee) {
+			inFile.close();
+			throw new NoSuchElementException("Read past end of file.");
+		}
 		System.out.println(stockManager.toString());
 		return stockManager;
 	}

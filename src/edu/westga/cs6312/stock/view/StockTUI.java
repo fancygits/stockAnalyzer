@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import edu.westga.cs6312.stock.controller.FileInteractor;
 import edu.westga.cs6312.stock.model.StockManager;
 
 /**
@@ -39,7 +40,7 @@ public class StockTUI {
 	 */
 	public void run() {
 		System.out.println("Welcome to the Stock Market Application");
-		
+		this.stockManager = FileInteractor.readData(input.nextLine());
 		int selection = -1;
 		do {
 			this.displayMenu();

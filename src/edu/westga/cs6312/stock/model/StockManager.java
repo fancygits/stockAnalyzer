@@ -11,12 +11,30 @@ import java.util.ArrayList;
  */
 public class StockManager {
 	private ArrayList<StockRecord> stockRecords;
+	private String filename;
 	
 	/**
 	 * Constructs a new StockManager object
 	 */
 	public StockManager() {
 		this.stockRecords = new ArrayList<StockRecord>();
+		this.filename = "";
+	}
+	
+	/**
+	 * Accessor for the file name the data was imported from
+	 * @return	String fileName
+	 */
+	public String getFileName() {
+		return this.filename;
+	}
+	
+	/**
+	 * Modifier for the file name
+	 * @param fileName	String file name
+	 */
+	public void setFileName(String fileName) {
+		this.filename = fileName;
 	}
 	
 	/**

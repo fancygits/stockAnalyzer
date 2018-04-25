@@ -1,12 +1,9 @@
 package edu.westga.cs6312.stock.view;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import edu.westga.cs6312.stock.controller.FileInteractor;
 import edu.westga.cs6312.stock.model.StockManager;
+import edu.westga.cs6312.stock.model.StockRecord;
 
 /**
  * Defines the Stock Text User Interface class
@@ -27,6 +24,9 @@ public class StockTUI {
 		this.input = new Scanner(System.in);
 	}
 	
+	/**
+	 * Displays a menu of options to use console
+	 */
 	private void displayMenu() {
 		System.out.println("\n\t1 - View summary data");
 		System.out.println("\t2 - View statistical data");
@@ -48,7 +48,7 @@ public class StockTUI {
 						break;
 				case 2: 
 						break;
-				case 3: 
+				case 3: this.displayAllRecords();
 						break;
 				case 4: System.out.println("\nGoodbye");
 						break;
@@ -78,14 +78,43 @@ public class StockTUI {
 		return response;
 	}
 
+	/**
+	 * Displays a summary of the StockManager (First, middle, and last record)
+	 */
 	private void displaySummaryData() {
 		int middle = this.stockManager.getSize() / 2;
 		int last = this.stockManager.getSize() - 1;
-		System.out.print("First Record:\t");
+		System.out.print("\nFirst Record:\t");
 		System.out.println(this.stockManager.getRecord(0).getSummary());
 		System.out.print("Middle Record:\t");
 		System.out.println(this.stockManager.getRecord(middle).getSummary());
 		System.out.print("Last Record:\t");
 		System.out.println(this.stockManager.getRecord(last).getSummary());
+	}
+	
+	
+	/**
+	 * Displays some statistical data to the console (Highest, Avg, and Lowest)
+	 */
+	private void displayStatisticalData() {
+		
+	}
+	
+	
+	/**
+	 * Displays all Records to the console
+	 */
+	private void displayAllRecords() {
+		System.out.println();
+		for (int count = 0; count < this.stockManager.getSize(); count++) {
+			System.out.println(this.stockManager.getRecord(count).getSummary());
+		}
+	}
+	
+	/**
+	 * Displays the fileName of the StockManager object
+	 */
+	private void displayFileName() {
+		System.out.println(this.stockManager.getFileName());
 	}
 }

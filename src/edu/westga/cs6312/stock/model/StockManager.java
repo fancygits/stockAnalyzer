@@ -54,6 +54,20 @@ public class StockManager {
 	}
 	
 	/**
+	 * Finds the maximum closing price from the stockManager
+	 * @return	The maximum closing price or 0 if empty
+	 */
+	public double getMaximum() {
+		double maximum = 0;
+		for (StockRecord current: this.stockRecords) {
+			if (current.getClose() > maximum) {
+				maximum = current.getClose();
+			}
+		}
+		return maximum;
+	}
+	
+	/**
 	 * Returns a String representation of the object
 	 */
 	@Override

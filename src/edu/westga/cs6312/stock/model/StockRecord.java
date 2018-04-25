@@ -61,6 +61,14 @@ public class StockRecord {
 		this.volume = Long.parseLong(record[6].trim());
 	}
 	
+	/**
+	 * Reformats the date to MM/dd/yyyy
+	 * Created this method before testing and realized its unnecessary.
+	 * Kept it for potential future expansion
+	 * 
+	 * @param strDate	String date in format yyyy-MM-dd
+	 * @return			String date in format MM/dd/yyyy
+	 */
 	private String dateReformatter(String strDate) {
 		SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd/yyyy");
 		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -78,7 +86,7 @@ public class StockRecord {
 	 */
 	@Override
 	public String toString() {
-		String output = String.format("%11s%11.2f%11.2f%11.2f%11.2f%11.2f%10d", this.date, this.open, this.high, this.low, this.close, this.adjClose, this.volume);
+		String output = String.format("%-11s%11.2f%11.2f%11.2f%11.2f%11.2f%10d", this.date, this.open, this.high, this.low, this.close, this.adjClose, this.volume);
 		return output;
 	}
 	

@@ -73,16 +73,41 @@ public class StockManager {
 	
 	/**
 	 * Finds the maximum closing price from the stockManager
-	 * @return	The maximum closing price or 0 if empty
+	 * @return	The maximum closing price
+	 * 
+	 * Precondition:	stockManager size != 0
 	 */
 	public double getMaximum() {
-		double maximum = 0;
+		if (this.getSize() == 0) {
+			throw new NullPointerException("The StockManager doesn't have any records.");
+		}
+		double maximum = this.stockRecords.get(0).getClose();
 		for (StockRecord current: this.stockRecords) {
 			if (current.getClose() > maximum) {
 				maximum = current.getClose();
 			}
 		}
 		return maximum;
+	}
+	
+	
+	/**
+	 * Finds the minimum closing price from the stockManager
+	 * @return	The minimum closing price
+	 * 
+	 * Precondition:	stockManager size != 0
+	 */
+	public double getMinimum() {
+		if (this.getSize() == 0) {
+			throw new NullPointerException("The StockManager doesn't have any records.");
+		}
+		double minimum = this.stockRecords.get(0).getClose();
+		for (StockRecord current: this.stockRecords) {
+			if (current.getClose() < minimum) {
+				minimum = current.getClose();
+			}
+		}
+		return minimum;
 	}
 	
 	/**

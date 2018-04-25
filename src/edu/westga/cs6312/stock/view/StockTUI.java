@@ -46,7 +46,7 @@ public class StockTUI {
 			switch (selection) {
 				case 1: this.displaySummaryData();
 						break;
-				case 2: 
+				case 2: this.displayStatisticalData();
 						break;
 				case 3: this.displayAllRecords();
 						break;
@@ -82,14 +82,19 @@ public class StockTUI {
 	 * Displays a summary of the StockManager (First, middle, and last record)
 	 */
 	private void displaySummaryData() {
-		int middle = this.stockManager.getSize() / 2;
-		int last = this.stockManager.getSize() - 1;
-		System.out.print("\nFirst Record:\t");
-		System.out.println(this.stockManager.getRecord(0).getSummary());
-		System.out.print("Middle Record:\t");
-		System.out.println(this.stockManager.getRecord(middle).getSummary());
-		System.out.print("Last Record:\t");
-		System.out.println(this.stockManager.getRecord(last).getSummary());
+		this.displayFileName();
+		try {
+			int middle = this.stockManager.getSize() / 2;
+			int last = this.stockManager.getSize() - 1;
+			System.out.print("First Record:\t");
+			System.out.println(this.stockManager.getRecord(0).getSummary());
+			System.out.print("Middle Record:\t");
+			System.out.println(this.stockManager.getRecord(middle).getSummary());
+			System.out.print("Last Record:\t");
+			System.out.println(this.stockManager.getRecord(last).getSummary());
+		} catch (IllegalArgumentException iae) {
+			System.out.println(iae.getMessage());
+		}
 	}
 	
 	
@@ -97,7 +102,14 @@ public class StockTUI {
 	 * Displays some statistical data to the console (Highest, Avg, and Lowest)
 	 */
 	private void displayStatisticalData() {
-		
+		this.displayFileName();
+		try {
+			System.out.printf("Highest Closing Price: $%.2f\n", this.stockManager.getMaximum());
+			System.out.printf("Lowest Closing Price:  $%.2f\n", this.stockManager.getMinimum());
+			System.out.printf("Average Closing Price: $%.2f\n", this.stockManager.getMaximum());
+		} catch (NullPointerException npe) {
+			System.out.println(npe.getMessage());
+		}
 	}
 	
 	
@@ -105,7 +117,7 @@ public class StockTUI {
 	 * Displays all Records to the console
 	 */
 	private void displayAllRecords() {
-		System.out.println();
+		this.displayFileName();
 		for (int count = 0; count < this.stockManager.getSize(); count++) {
 			System.out.println(this.stockManager.getRecord(count).getSummary());
 		}
@@ -115,6 +127,6 @@ public class StockTUI {
 	 * Displays the fileName of the StockManager object
 	 */
 	private void displayFileName() {
-		System.out.println(this.stockManager.getFileName());
+		System.out.println("\n" + this.stockManager.getFileName());
 	}
 }

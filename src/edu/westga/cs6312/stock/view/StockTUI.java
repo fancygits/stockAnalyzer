@@ -85,11 +85,11 @@ public class StockTUI {
 		try {
 			int middle = this.stockManager.getSize() / 2;
 			int last = this.stockManager.getSize() - 1;
-			System.out.print("First Record:\t");
+			System.out.print("First Record:\t\t");
 			System.out.println(this.stockManager.getRecord(0).getSummary());
-			System.out.print("Middle Record:\t");
+			System.out.print("Middle Record:\t\t");
 			System.out.println(this.stockManager.getRecord(middle).getSummary());
-			System.out.print("Last Record:\t");
+			System.out.print("Last Record:\t\t");
 			System.out.println(this.stockManager.getRecord(last).getSummary());
 		} catch (IllegalArgumentException iae) {
 			System.out.println(iae.getMessage());
@@ -104,8 +104,8 @@ public class StockTUI {
 		this.displayFileName();
 		try {
 			System.out.printf("Highest Closing Price: $%.2f\n", this.stockManager.getMaximum());
-			System.out.printf("Lowest Closing Price:  $%.2f\n", this.stockManager.getAverage());
-			System.out.printf("Average Closing Price: $%.2f\n", this.stockManager.getMaximum());
+			System.out.printf("Lowest Closing Price:  $%.2f\n", this.stockManager.getMinimum());
+			System.out.printf("Average Closing Price: $%.2f\n", this.stockManager.getAverage());
 		} catch (NullPointerException npe) {
 			System.out.println(npe.getMessage());
 		}

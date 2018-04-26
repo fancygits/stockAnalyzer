@@ -29,6 +29,8 @@ public class StockRecord {
 	 * @param close		The closing stock price
 	 * @param adjClose	The adjusted closing stock price
 	 * @param volume	The volume of stocks bought and sold
+	 * 
+	 * Precondition:	stock prices > 0
 	 */
 	public StockRecord(String strDate, double open, double high, double low, double close, double adjClose, long volume) {
 		if (open < 0 | high < 0 | low < 0 | close < 0 | adjClose < 0 | volume < 0) {
@@ -46,10 +48,12 @@ public class StockRecord {
 	/**
 	 * Constructs a new StockRecord object from a line of input
 	 * @param lineOfInput	A line from a CSV file
+	 * 
+	 * Precondition:	lineOfInput.length >= 7
 	 */
 	public StockRecord(String lineOfInput) {
 		String[] record = lineOfInput.split(",");
-		if (record.length != 7) {
+		if (record.length < 7) {
 			throw new IllegalArgumentException("Not enough data to create a record");
 		}
 		this.date = record[0];
@@ -59,6 +63,10 @@ public class StockRecord {
 		this.close = Double.parseDouble(record[4]);
 		this.adjClose = Double.parseDouble(record[5]);
 		this.volume = Long.parseLong(record[6].trim());
+		
+		if (this.open < 0 | this.high < 0 | this.low < 0 | this.close < 0 | this.adjClose < 0 | this.volume < 0) {
+			throw new IllegalArgumentException("Stock numbers must be positive");
+		}
 	}
 	
 	/**

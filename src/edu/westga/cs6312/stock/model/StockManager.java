@@ -55,6 +55,8 @@ public class StockManager {
 	 * 
 	 * @param index	The index of the record to retrieve
 	 * @return		The StockRecord of the given index
+	 * 
+	 * Precondition:	index < this.stockRecords.size()
 	 */
 	public StockRecord getRecord(int index) {
 		if (index > this.stockRecords.size() - 1) {
@@ -108,6 +110,26 @@ public class StockManager {
 			}
 		}
 		return minimum;
+	}
+	
+	
+	/**
+	 * Calculates the average closing price of all StockRecords
+	 * 
+	 * @return	double average closing price
+	 * 
+	 * Precondition:	StockManager size != 0
+	 */
+	public double getAverage() {
+		if (this.getSize() == 0) {
+			throw new NullPointerException("The StockManager doesn't have any records.");
+		}
+		double average = 0;
+		for (StockRecord current: this.stockRecords) {
+			average += current.getClose();
+		}
+		average /= this.getSize();
+		return average;
 	}
 	
 	/**

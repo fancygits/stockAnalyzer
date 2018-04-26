@@ -3,7 +3,6 @@ package edu.westga.cs6312.stock.view;
 import java.util.Scanner;
 
 import edu.westga.cs6312.stock.model.StockManager;
-import edu.westga.cs6312.stock.model.StockRecord;
 
 /**
  * Defines the Stock Text User Interface class
@@ -105,7 +104,7 @@ public class StockTUI {
 		this.displayFileName();
 		try {
 			System.out.printf("Highest Closing Price: $%.2f\n", this.stockManager.getMaximum());
-			System.out.printf("Lowest Closing Price:  $%.2f\n", this.stockManager.getMinimum());
+			System.out.printf("Lowest Closing Price:  $%.2f\n", this.stockManager.getAverage());
 			System.out.printf("Average Closing Price: $%.2f\n", this.stockManager.getMaximum());
 		} catch (NullPointerException npe) {
 			System.out.println(npe.getMessage());

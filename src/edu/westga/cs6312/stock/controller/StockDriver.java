@@ -16,5 +16,4 @@ public class StockDriver {
 		VersionChooser chooser = new VersionChooser();
 		chooser.chooseVersion();
 	}
-
 }

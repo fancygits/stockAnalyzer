@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import edu.westga.cs6312.stock.model.StockManager;
+import edu.westga.cs6312.stock.view.StockGUI;
 import edu.westga.cs6312.stock.view.StockTUI;
 
 /**
@@ -31,7 +32,25 @@ public class VersionChooser {
 		System.out.println("Welcome to the Stock Market Application");
 		String fileName = this.getFileName();
 		this.stockManager = FileInteractor.readData(fileName);
-		this.runTextOption();
+		this.displayOptions();
+	}
+	
+	/**
+	 * Presents a choice of User Interface and defaults to graphical
+	 */
+	private void displayOptions() {
+		System.out.println("\n1 - Text Interface");
+		System.out.println("2 - Graphical Interface (default)");
+		try {
+			int choice = Integer.parseInt(this.input.nextLine());
+			if (choice == 1) {
+				this.runTextOption();
+			} else {
+				this.runGraphicsOption();
+			}
+		} catch (Exception e) {
+			this.runGraphicsOption();
+		}
 	}
 	
 	/**
@@ -40,6 +59,14 @@ public class VersionChooser {
 	private void runTextOption() {
 		StockTUI textOption = new StockTUI(this.stockManager);
 		textOption.run();
+	}
+	
+	/**
+	 * Runs the GUI Stock Market Application
+	 */
+	private void runGraphicsOption() {
+		StockGUI.setManager(this.stockManager);
+		StockGUI.launch(StockGUI.class);
 	}
 	
 	/**

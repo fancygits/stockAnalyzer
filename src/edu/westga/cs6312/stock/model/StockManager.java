@@ -66,6 +66,14 @@ public class StockManager {
 	}
 	
 	/**
+	 * Returns the ArrayList of StockRecord objects
+	 * @return	ArrayList<StockRecord>
+	 */
+	public ArrayList<StockRecord> getAllRecords() {
+		return this.stockRecords;
+	}
+	
+	/**
 	 * Accessor for the size of the ArrayList
 	 * @return	int Size of StockManager ArrayList<StockRecord>
 	 */

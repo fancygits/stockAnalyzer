@@ -78,7 +78,7 @@ public class StockRecord {
 	 * @return			String date in format MM/dd/yyyy
 	 */
 	private String dateReformatter(String strDate) {
-		SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat outputFormat = new SimpleDateFormat("M/d/yyyy");
 		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			Date date = inputFormat.parse(strDate);

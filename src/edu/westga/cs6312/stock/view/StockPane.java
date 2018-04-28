@@ -1,7 +1,9 @@
 package edu.westga.cs6312.stock.view;
 
 import edu.westga.cs6312.stock.model.StockManager;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -24,15 +26,14 @@ public class StockPane extends Pane {
 	}
 	
 	private void drawStockPane() {
-		//this.setPadding(new Insets(50, 50, 50, 50));
-		GridPane graph = this.getGraph();
-		graph.setLayoutX(50);
-		graph.setLayoutY(50);
-		this.getChildren().add(graph);
+		this.drawGrid();
+		this.drawXLabels();
 	}
 	
-	private GridPane getGraph() {
+	private void drawGrid() {
 		GridPane graph = new GridPane();
+		graph.setLayoutX(50);
+		graph.setLayoutY(50);
 		for (int row = 0; row < 4; row++) {
 			for (int column = 0; column < 2; column++) {
 				Rectangle rect = new Rectangle();
@@ -43,6 +44,26 @@ public class StockPane extends Pane {
 				graph.add(rect, column, row);
 			}
 		}
-		return graph;
+		this.getChildren().add(graph);
 	}
+	
+	private void drawXLabels() {
+		String beginning = this.stockManager.getRecord(0).getReformattedDate();
+		Label firstDate = new Label(beginning);
+		firstDate.setLayoutX(25);
+		firstDate.layoutYProperty().bind(this.heightProperty().subtract(45));
+
+		String middle = this.stockManager.getRecord(this.stockManager.getSize() / 2).getReformattedDate();
+		Label secondDate = new Label(middle);
+		secondDate.layoutXProperty().bind(this.widthProperty().divide(2).subtract(25));
+		secondDate.layoutYProperty().bind(this.heightProperty().subtract(45));
+		
+		String end = this.stockManager.getRecord(this.stockManager.getSize() - 1).getReformattedDate();
+		Label thirdDate = new Label(end);
+		thirdDate.layoutXProperty().bind(this.widthProperty().subtract(75));
+		thirdDate.layoutYProperty().bind(this.heightProperty().subtract(45));
+		
+		this.getChildren().addAll(firstDate, secondDate, thirdDate);
+	}
+	
 }

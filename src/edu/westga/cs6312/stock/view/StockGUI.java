@@ -26,7 +26,7 @@ public class StockGUI extends Application {
 	 * @param	primaryStage The primary stage
 	 */
 	public void start(Stage primaryStage) {
-		StockPane pane = new StockPane(stockManager);
+		InteractivePane pane = new InteractivePane(stockManager);
 		Scene scene = new Scene(pane, 600, 500);
 
 		primaryStage.setTitle("CS6312 - Final - Stock Market Application");

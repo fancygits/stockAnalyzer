@@ -39,20 +39,29 @@ public class VersionChooser {
 	 * Presents a choice of User Interface and defaults to graphical
 	 */
 	private void displayOptions() {
-		System.out.println("\n1 - Text Interface");
-		System.out.println("2 - Graphical Interface (default)");
-		System.out.print("Please enter your choice: ");
-		int choice = 0;
-		try {
-			choice = Integer.parseInt(this.input.nextLine());
-		} catch (NumberFormatException nfe) {
-			choice = 2;
-		}
-		if (choice == 1) {
-			this.runTextOption();
-		} else {
-			this.runGraphicsOption();
-		}
+		boolean isValid = false;
+		do {
+			System.out.println("\n1 - Text Interface");
+			System.out.println("2 - Graphical Interface (default)");
+			System.out.print("Please enter your choice: ");
+			int choice = 0;
+			try {
+				choice = Integer.parseInt(this.input.nextLine());
+			} catch (NumberFormatException nfe) {
+				
+			}
+			if (choice == 1) {
+				System.out.println("\nRunning TUI. Thank you.\n");
+				this.runTextOption();
+				isValid = true;
+			} else if (choice == 2) {
+				System.out.println("\nRunning GUI. Please switch windows. Thank you.\n");
+				this.runGraphicsOption();
+				isValid = true;
+			} else {
+				System.out.println("Sorry. That's not a valid choice. Please try again.");
+			}
+		} while (!isValid);
 	}
 	
 	/**

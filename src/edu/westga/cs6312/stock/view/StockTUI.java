@@ -38,6 +38,7 @@ public class StockTUI {
 	 * for the user to choose from
 	 */
 	public void run() {
+		System.out.println("Welcome to the Stock Market TUI!");
 		int selection = -1;
 		do {
 			this.displayMenu();

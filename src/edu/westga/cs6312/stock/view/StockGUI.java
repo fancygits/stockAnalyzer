@@ -30,8 +30,8 @@ public class StockGUI extends Application {
 		Scene scene = new Scene(pane, 600, 500);
 
 		primaryStage.setTitle("CS6312 - Final - Stock Market Application");
-		primaryStage.setMinHeight(200);
-		primaryStage.setMinWidth(350);
+		primaryStage.setMinHeight(250);
+		primaryStage.setMinWidth(300);
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
 	}

@@ -1,7 +1,11 @@
 package edu.westga.cs6312.stock.view;
 
 import edu.westga.cs6312.stock.model.StockManager;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 
 /**
  * Defines the InteractivePane for changing files for StockPane
@@ -11,6 +15,10 @@ import javafx.scene.layout.BorderPane;
 public class InteractivePane extends BorderPane {
 	private StockManager stockManager;
 	
+	/**
+	 * Constructs a new InteractivePane
+	 * @param stockManager	StockManager object filled with data
+	 */
 	public InteractivePane(StockManager stockManager) {
 		this.stockManager = stockManager;
 		this.drawTop();
@@ -18,6 +26,11 @@ public class InteractivePane extends BorderPane {
 	}
 	
 	private void drawTop() {
+		Button newFile = new Button("New File");
+		Label currentFile = new Label(this.stockManager.getFileName(), newFile);
+		currentFile.setContentDisplay(ContentDisplay.LEFT);
+		currentFile.setFont(Font.font("Verdana", 16));
+		this.setTop(currentFile);
 		
 	}
 	

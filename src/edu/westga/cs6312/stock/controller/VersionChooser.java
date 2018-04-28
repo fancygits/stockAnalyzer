@@ -42,7 +42,7 @@ public class VersionChooser {
 		boolean isValid = false;
 		do {
 			System.out.println("\n1 - Text Interface");
-			System.out.println("2 - Graphical Interface (default)");
+			System.out.println("2 - Graphical Interface");
 			System.out.print("Please enter your choice: ");
 			int choice = 0;
 			try {
@@ -59,7 +59,7 @@ public class VersionChooser {
 				this.runGraphicsOption();
 				isValid = true;
 			} else {
-				System.out.println("Sorry. That's not a valid choice. Please try again.");
+				System.out.println("\nSorry. That's not a valid choice. Please try again.");
 			}
 		} while (!isValid);
 	}

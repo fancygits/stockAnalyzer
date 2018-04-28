@@ -2,6 +2,7 @@ package edu.westga.cs6312.stock.view;
 
 import edu.westga.cs6312.stock.model.StockManager;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -12,9 +13,12 @@ import javafx.stage.Stage;
 public class StockGUI extends Application {
 	private static StockManager stockManager;
 	
+	/**
+	 * Sets the givenStockManager to this.stockManager
+	 * @param givenStockManager	A loaded StockManager object
+	 */
 	public static void setManager(StockManager givenStockManager) {
 		stockManager = givenStockManager;
-		StockGUI.launch(StockGUI.class);
 	}
 
 	/**
@@ -22,11 +26,12 @@ public class StockGUI extends Application {
 	 * @param	primaryStage The primary stage
 	 */
 	public void start(Stage primaryStage) {
-		 pane = new ();
-		Scene scene = new Scene(pane, 500, 500);
+		StockPane pane = new StockPane(stockManager);
+		Scene scene = new Scene(pane, 600, 500);
 
-		primaryStage.setResizable(false);
-		primaryStage.setTitle("CS6312 - Lab13 - Rules to Live By");
+		primaryStage.setTitle("CS6312 - Final - Stock Market Application");
+		primaryStage.setMinHeight(200);
+		primaryStage.setMinWidth(300);
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
 	}

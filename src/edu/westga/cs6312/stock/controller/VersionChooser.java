@@ -41,14 +41,16 @@ public class VersionChooser {
 	private void displayOptions() {
 		System.out.println("\n1 - Text Interface");
 		System.out.println("2 - Graphical Interface (default)");
+		System.out.print("Please enter your choice: ");
+		int choice = 0;
 		try {
-			int choice = Integer.parseInt(this.input.nextLine());
-			if (choice == 1) {
-				this.runTextOption();
-			} else {
-				this.runGraphicsOption();
-			}
-		} catch (Exception e) {
+			choice = Integer.parseInt(this.input.nextLine());
+		} catch (NumberFormatException nfe) {
+			choice = 2;
+		}
+		if (choice == 1) {
+			this.runTextOption();
+		} else {
 			this.runGraphicsOption();
 		}
 	}

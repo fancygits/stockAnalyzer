@@ -31,7 +31,6 @@ public class StockPane extends Pane {
 	}
 	
 	private void drawStockPane() {
-		this.setStyle("-fx-background-color: gainsboro;");
 		this.drawGrid();
 		this.drawXLabels();
 		this.drawYLabels();

@@ -87,11 +87,11 @@ public class StockTUI {
 			int middle = this.stockManager.getSize() / 2;
 			int last = this.stockManager.getSize() - 1;
 			System.out.print("First Record:\t\t");
-			System.out.println(this.stockManager.getRecord(0).getSummary());
+			System.out.println(this.stockManager.getRecord(0).toString());
 			System.out.print("Middle Record:\t\t");
-			System.out.println(this.stockManager.getRecord(middle).getSummary());
+			System.out.println(this.stockManager.getRecord(middle).toString());
 			System.out.print("Last Record:\t\t");
-			System.out.println(this.stockManager.getRecord(last).getSummary());
+			System.out.println(this.stockManager.getRecord(last).toString());
 		} catch (IllegalArgumentException iae) {
 			System.out.println(iae.getMessage());
 		}
@@ -119,7 +119,7 @@ public class StockTUI {
 	private void displayAllRecords() {
 		this.displayFileName();
 		for (int count = 0; count < this.stockManager.getSize(); count++) {
-			System.out.println(this.stockManager.getRecord(count).getSummary());
+			System.out.println(this.stockManager.getRecord(count).toString());
 		}
 	}
 	

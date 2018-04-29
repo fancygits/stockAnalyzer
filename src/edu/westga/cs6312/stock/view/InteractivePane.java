@@ -4,6 +4,7 @@ import java.io.File;
 
 import edu.westga.cs6312.stock.controller.FileInteractor;
 import edu.westga.cs6312.stock.model.StockManager;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
@@ -32,6 +33,7 @@ public class InteractivePane extends BorderPane {
 	private void drawTop() {
 		Button newFile = new Button("New File");
 		Label currentFile = new Label(this.stockManager.getFileName(), newFile);
+		currentFile.setPadding(new Insets(5, 5, 5, 5));
 		currentFile.setContentDisplay(ContentDisplay.LEFT);
 		currentFile.setFont(Font.font("Verdana", 16));
 		
@@ -39,11 +41,18 @@ public class InteractivePane extends BorderPane {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Open New Stock Market Data File");
 			fileChooser.setInitialDirectory(new File("."));
-			fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Comma Separated Value File", "*.csv"));
+			fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.*"), 
+					new FileChooser.ExtensionFilter("Comma Separated Value File", "*.csv"));
 			File selectedFile = fileChooser.showOpenDialog(null);
 			if (selectedFile != null) {
-				currentFile.setText(selectedFile.getName());
-				this.openFile(selectedFile);
+				try {
+					currentFile.setText(selectedFile.getName());
+					this.stockManager = FileInteractor.readData(selectedFile.toString());
+					this.drawCenter();
+				} catch (Exception ex) {
+					currentFile.setText("That file doesn't contain Stock Records. Try again.");
+				}
+				
 			}
 		});
 			
@@ -53,11 +62,6 @@ public class InteractivePane extends BorderPane {
 	private void drawCenter() {
 		StockPane center = new StockPane(this.stockManager);
 		this.setCenter(center);
-	}
-	
-	private void openFile(File fileName) {
-		this.stockManager = FileInteractor.readData(fileName.toString());
-		this.drawCenter();
 	}
 
 }

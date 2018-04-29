@@ -18,8 +18,8 @@ class TestStockRecordGetDate {
 	 */
 	@Test
 	void testGetDateShouldReturnTheStringDate3162018() {
-		StockRecord apple = new StockRecord("3/16/2018", 178.649994, 179.119995, 177.619995, 178.020004, 178.020004, 39404700);
-		assertEquals("3/16/2018", apple.getDate());
+		StockRecord apple = new StockRecord("2018-03-16,178.649994,179.119995,177.619995,178.020004,178.020004,39404700");
+		assertEquals("2018-03-16", apple.getDate());
 	}
 
 	/**
@@ -27,7 +27,7 @@ class TestStockRecordGetDate {
 	 */
 	@Test
 	void testGetDateShouldReturnTheStringDate4202018() {
-		StockRecord brka = new StockRecord("4/20/2018", 301680, 301680, 298450, 300140, 300140, 139);
-		assertEquals("4/20/2018", brka.getDate());
+		StockRecord brka = new StockRecord("2018-04-20,301680.000000,301680.000000,298450.000000,300140.000000,300140.000000,139");
+		assertEquals("2018-04-20", brka.getDate());
 	}
 }
